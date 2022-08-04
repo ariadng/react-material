@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./lib/index.scss";
+
+body {
+  font-variation-settings: 'wdth' 115;
+}

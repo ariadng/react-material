@@ -1,0 +1,15 @@
+.rm_button {
+	@apply inline-flex items-center;
+	@apply px-6 py-2;
+	@apply rounded-[2em] font-semibold;
+	@apply border border-transparent;
+	@apply select-none;
+	@apply transition-all;
+
+	&:hover {}
+
+	&:active {
+		@apply opacity-90;
+		@apply transition-none;
+	}
+}

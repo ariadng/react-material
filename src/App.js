@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import { ElevatedButton, FilledButton, FilledTonalButton, OutlinedButton } from "./lib/components/Button";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className="p-[50px]">
+			<div>
+				<div className='font-semibold text-xl mb-6 pl-4 text-teal-800 border-l-4 border-teal-800'>Buttons</div>
+				<ElevatedButton label='Elevated Button' marginRight={1} />
+				<FilledButton label='Filled Button' marginRight={1} />
+				<FilledTonalButton label='Filled Tonal Button' marginRight={1} />
+				<OutlinedButton label='Outlined Button' />
+			</div>
+		</div>
+	);
 }
 
 export default App;

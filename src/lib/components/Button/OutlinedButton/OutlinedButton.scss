@@ -1,0 +1,12 @@
+.rm_button.outlined {
+	@apply text-teal-900 bg-transparent;
+	@apply border-teal-700;
+
+	&:hover {
+		@apply bg-teal-50;
+		@apply border-teal-600;
+	}
+
+	&:active {}
+	
+}

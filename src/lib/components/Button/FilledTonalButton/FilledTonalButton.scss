@@ -1,0 +1,10 @@
+.rm_button.filled-tonal {
+	@apply text-teal-900 bg-teal-50;
+
+	&:hover {
+		@apply bg-teal-100;
+	}
+
+	&:active {}
+	
+}

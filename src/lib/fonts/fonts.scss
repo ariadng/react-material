@@ -1,0 +1,10 @@
+@font-face {
+	font-family: "Roboto Flex";
+	src: url("./RobotoFlex.ttf");
+}
+
+body {
+	font-family: "Roboto Flex", sans-serif;
+	// Variable font configurations
+	font-variation-settings: 'wdth' 115;
+}
