@@ -1,0 +1,12 @@
+.rm_button.icon-only {
+	@apply p-0 w-10 h-10;
+	@apply flex items-center justify-center;
+	@apply text-white bg-teal-700;
+
+	&:hover {
+		@apply bg-teal-600;
+	}
+
+	&:active {}
+
+}

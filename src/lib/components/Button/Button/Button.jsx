@@ -1,7 +1,9 @@
+import { Icon } from '../../Icon';
 import './Button.scss';
 
 const Button = ({
 	label,
+	icon,
 	className,
 	marginLeft,
 	marginRight,
@@ -17,7 +19,13 @@ const Button = ({
 			className={`rm_button ${className ?? className}`}
 			style={style}
 		>
-			{label}
+			{label && !icon &&
+				<div className='label'>{label}</div>
+			}
+
+			{icon && !label &&
+				<Icon name={icon} />
+			}
 		</button>
 	)
 
