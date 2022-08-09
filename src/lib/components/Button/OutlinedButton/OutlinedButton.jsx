@@ -9,8 +9,12 @@ const OutlinedButton = ({
 
 	return (
 		<Button
-			className='outlined'
+			className='filled'
 			label={label}
+			color='primary'
+			bgTone='-1'
+			fgTone='40'
+			outline='1'
 			marginLeft={marginLeft}
 			marginRight={marginRight}
 		/>

@@ -1,28 +1,28 @@
-import { ElevatedButton, FilledButton, FilledTonalButton, IconButton, OutlinedButton } from "./lib/components/Button";
-import { Icon } from "./lib/components/Icon";
+import { Button, FilledButton, FilledTonalButton, OutlinedButton } from './lib/components/Button';
+import { ColorPalette } from "./lib/components/ColorPalette";
 
 function App() {
 	return (
 		<div className="p-[50px]">
 
-			<div className='mb-[50px]'>
-				<div className='font-semibold text-xl mb-6 pl-4 text-teal-800 border-l-4 border-teal-800'>Icons</div>
-				<div className='flex items-center'>
-					<Icon name='arrow_forward' />
-					<Icon name='arrow_forward' size='large' />
+			<div className='flex items-center'>
+				<div className='mr-4'>
+					<Button label='Normal Button' />
+				</div>
+				<div className='mr-4'>
+					<Button label='Disabled Button' disabled={true} />
 				</div>
 			</div>
 
-			<div className='mb-[50px]'>
-				<div className='font-semibold text-xl mb-6 pl-4 text-teal-800 border-l-4 border-teal-800'>Buttons</div>
-				<div className='flex items-center'>
-					<ElevatedButton label='Elevated Button' marginRight={1} />
-					<FilledButton label='Filled Button' marginRight={1} />
-					<FilledTonalButton label='Filled Tonal Button' marginRight={1} />
-					<OutlinedButton label='Outlined Button' marginRight={1} />
-					<IconButton icon='arrow_forward' />
-				</div>
+			<div className='mt-[50px]'>
+				<ColorPalette color='primary' className='mb-[25px]'/>
+				<ColorPalette color='secondary' className='mb-[25px]'/>
+				<ColorPalette color='tertiary' className='mb-[25px]'/>
+				<ColorPalette color='neutral' className='mb-[25px]'/>
 			</div>
+
+
+			
 		</div>
 	);
 }

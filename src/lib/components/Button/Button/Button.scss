@@ -1,15 +1,49 @@
 .rm_button {
-	@apply inline-flex items-center;
+	@apply relative inline-flex items-center overflow-hidden;
 	@apply px-6 py-2;
 	@apply rounded-[2em] font-semibold;
-	@apply border border-transparent;
 	@apply select-none;
-	@apply transition-all;
+	
+	transition: all 0.6s ease-out;
+
+	.foreground {
+		position: relative;
+		z-index: 30;
+		pointer-events: none;
+	}
+
+	.ripple {
+		position: absolute;
+		width: 200%;
+		height: 200%;
+		top: -50%;
+		left: -50%;
+		background-color: transparent;
+		transition: background 1.2s ease-out;
+		background-size: 10000%;
+		background-position: center center;
+		z-index: 20;
+		pointer-events: none;
+	}
+
+	.background {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		z-index: 10;
+		pointer-events: none;
+	}
 
 	&:hover {}
 
 	&:active {
-		@apply opacity-90;
 		@apply transition-none;
+		
+		.ripple {
+			@apply transition-none;
+			background-size: 100%;
+		}
 	}
 }

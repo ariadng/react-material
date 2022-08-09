@@ -9,8 +9,12 @@ const FilledTonalButton = ({
 
 	return (
 		<Button
-			className='filled-tonal'
+			className='filled'
 			label={label}
+			color='primary'
+			bgTone='80'
+			fgTone='10'
+			rippleTone='70'
 			marginLeft={marginLeft}
 			marginRight={marginRight}
 		/>
