@@ -9,8 +9,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const reactMaterialConfig = {
 	palette: {
-		primary: '#386a20',
-		secondary: '#55624c',
+		primary: '#0099ff',
+		secondary: '#4796CB',
 		tertiary: '#19686a',
 		neutral: '#5d5f5a',
 		error: '#b3261e',

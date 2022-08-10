@@ -7,18 +7,18 @@ const generateColorPalette = (color) => {
 
 	const palette = {
 		'0'		: { s: 100, l: 0 },
-		'10'	: { s: saturation + 15, l: Math.max(luminance - 30, 6) },
-		'20'	: { s: saturation + 10, l: Math.max(luminance - 30, 11) },
-		'30'	: { s: saturation + 5, 	l: Math.max(luminance - 30, 17) },
-		'40'	: { s: saturation, 		l: luminance},
-		'50'	: { s: saturation, 	l: luminance + 10 },
-		'60'	: { s: saturation, l: luminance + 20 },
-		'70'	: { s: saturation, l: luminance + 30 },
-		'80'	: { s: saturation + 10, l: luminance + 40 },
-		'90'	: { s: saturation + 25, l: Math.min(luminance + 50, 93) },
-		'95'	: { s: saturation + 30, l: Math.min(luminance + 55, 95) },
-		'99'	: { s: saturation + 35, l: Math.min(luminance + 70, 99) },
-		'100'	: { s: saturation, l: 100 },
+		'10'	: { s: Math.min(saturation + 15, 100), 	l: Math.max(luminance - 30, 10) },
+		'20'	: { s: Math.min(saturation + 10, 100), 	l: Math.max(luminance - 20, 15) },
+		'30'	: { s: Math.min(saturation + 5, 100), 	l: Math.max(luminance - 10, 25) },
+		'40'	: { s: saturation, l: Math.max(luminance, 35) },
+		'50'	: { s: saturation, l: Math.max(luminance + 10, 45) },
+		'60'	: { s: saturation, l: Math.max(luminance + 20, 55) },
+		'70'	: { s: Math.min(saturation + 5, 100), l: Math.max(luminance + 30, 65) },
+		'80'	: { s: Math.min(saturation + 10, 100), l: Math.min(luminance + 40, 86) },
+		'90'	: { s: Math.min(saturation + 25, 100), l: Math.min(luminance + 50, 93) },
+		'95'	: { s: Math.min(saturation + 30, 100), l: Math.min(luminance + 55, 95) },
+		'99'	: { s: Math.min(saturation + 35, 100), l: Math.min(luminance + 70, 97) },
+		'100'	: { s: Math.min(saturation + 40, 100), l: 100 },
 	};
 
 	const result = {};
