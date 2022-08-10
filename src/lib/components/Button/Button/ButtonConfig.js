@@ -3,8 +3,6 @@ const config = {
 	state: {},
 };
 
-// [ State ]
-
 // Default state
 config.state.default = {
 	container: {

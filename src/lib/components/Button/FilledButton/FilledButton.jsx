@@ -1,24 +1,20 @@
 
 
 import Button from '../Button/Button';
-import './FilledButton.scss';
+import FilledButtonConfig from './FilledButtonConfig';
 
 const FilledButton = ({
 	label,
-	marginLeft,
-	marginRight,
+	disabled,
+	style,
 }) => {
 
 	return (
 		<Button
-			className='filled'
 			label={label}
-			color='primary'
-			bgTone='40'
-			fgTone='100'
-			rippleTone='30'
-			marginLeft={marginLeft}
-			marginRight={marginRight}
+			disabled={disabled}
+			defaultStyle={FilledButtonConfig}
+			style={style}
 		/>
 	)
 

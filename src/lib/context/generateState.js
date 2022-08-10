@@ -50,7 +50,7 @@ const generateState = (config = undefined) => {
 		'cursor'				: 'not-allowed'
 	};
 	state.hover = {
-		'state-layer-opacity'	: 0.06,
+		'state-layer-opacity'	: 0.1,
 		'transition-duration'	: '0.3s',
 	};
 	state.focus = {

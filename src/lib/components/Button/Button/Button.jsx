@@ -1,15 +1,16 @@
 import { useContext, useState, useRef, useEffect } from 'react';
 import ReactMaterialContext from '../../../context/ReactMaterialContext';
 
-import DefaultButtonConfig from './DefaultButtonConfig';
+import ButtonConfig from './ButtonConfig';
 
 const Button = ({
 	label,
 	disabled,
-	
+	defaultStyle,
+	style: customStyle,
 }) => {
 
-	const config 		= DefaultButtonConfig;
+	const config 		= ButtonConfig;
 	const { getValue } 	= useContext(ReactMaterialContext);
 
 	const [ layout, setLayout ] = useState(config.layout);
@@ -18,81 +19,112 @@ const Button = ({
 	const [ rippleSize, setRippleSize ] = useState('10000%');
 	const [ ripplePos, setRipplePos ] = useState(['-50%', '-50%']);
 
-	useEffect(() => {
+	const updateStyle = (updatedStyle = { container: {}, label: {}, icon: {} }) => {
 
-	}, []);
+		const newStyle = {
+			container: {
+				...config.state.default.container,
+				...(defaultStyle ? defaultStyle.state.default.container : {}),
+				...updatedStyle.container,
+			},
+			label: {
+				...config.state.default.label,
+				...(defaultStyle ? defaultStyle.state.default.label : {}),
+				...updatedStyle.label,
+			},
+			icon: {
+				...config.state.default.icon,
+				...(defaultStyle ? defaultStyle.state.default.icon : {}),
+				...updatedStyle.icon,
+			},
+		};
+		setStyle(newStyle);
+	}
+
+	useEffect(() => {
+		if (defaultStyle) updateStyle();
+	}, [defaultStyle]);
 
 	useEffect(() => {
 		if (disabled) {
-			const updatedStyle = {
-				container: {
-					...config.state.default.container,
-					...config.state.disabled.container,
-				},
-				label: {
-					...config.state.default.label,
-					...config.state.disabled.label,
-				},
-				icon: {
-					...config.state.default.icon,
-					...config.state.disabled.icon,
-				},
-			};
-			setStyle(updatedStyle);
+			let newStyle = config.state.disabled;
+			if (defaultStyle) {
+				newStyle = {
+					container: {
+						...newStyle.container,
+						...defaultStyle.state.disabled.container,
+					},
+					label: {
+						...newStyle.label,
+						...defaultStyle.state.disabled.label,
+					},
+					icon: {
+						...newStyle.icon,
+						...defaultStyle.state.disabled.icon,
+					},
+				};
+			}
+			updateStyle(newStyle);
 		}
 	}, [disabled]);
 
 	const onMouseEnterHandler = () => {
 		if (!disabled) {
-			const updatedStyle = {
-				container: {
-					...config.state.default.container,
-					...config.state.hovered.container,
-				},
-				label: {
-					...config.state.default.label,
-					...config.state.hovered.label,
-				},
-				icon: {
-					...config.state.default.icon,
-					...config.state.hovered.icon,
-				},
-			};
-			setStyle(updatedStyle);
+			let newStyle = config.state.hovered;
+			if (defaultStyle) {
+				newStyle = {
+					container: {
+						...newStyle.container,
+						...defaultStyle.state.hovered.container,
+					},
+					label: {
+						...newStyle.label,
+						...defaultStyle.state.hovered.label,
+					},
+					icon: {
+						...newStyle.icon,
+						...defaultStyle.state.hovered.icon,
+					},
+				};
+			}
+			updateStyle(newStyle);
 		}
 	};
 
 	const onMouseLeaveHandler = () => {
-		if (!disabled) {
-			setStyle(config.state.default);
-		}
+		if (!disabled) updateStyle();
 	};
 	
 	const onMouseDownHandler = (event) => {
 		if (!disabled) {
-			const updatedStyle = {
-				container: {
-					...config.state.default.container,
-					...config.state.pressed.container,
-				},
-				label: {
-					...config.state.default.label,
-					...config.state.pressed.label,
-				},
-				icon: {
-					...config.state.default.icon,
-					...config.state.pressed.icon,
-				},
-			};
-			setStyle(updatedStyle);
-			setRippleSize('100%');
-
+			
 			const w = event.target.offsetWidth / 2;
 			const h = event.target.offsetHeight / 2;
 			const y = event.pageY - event.target.offsetTop - h;
 			const x = event.pageX - event.target.offsetLeft - w;
 			const top = `calc(-50% + ${y}px)`;
 			const left = `calc(-50% + ${x}px)`;
+			
+			let newStyle = config.state.pressed;
+			if (defaultStyle) {
+				newStyle = {
+					container: {
+						...newStyle.container,
+						...defaultStyle.state.pressed.container,
+					},
+					label: {
+						...newStyle.label,
+						...defaultStyle.state.pressed.label,
+					},
+					icon: {
+						...newStyle.icon,
+						...defaultStyle.state.pressed.icon,
+					},
+				};
+			}
+
+			updateStyle(newStyle);
+			setRippleSize('100%');
 			setRipplePos([top, left]);
 
 		}
@@ -100,7 +132,7 @@ const Button = ({
 
 	const onMouseUpHandler = () => {
 		if (!disabled) {
-			setStyle(config.state.default);
+			updateStyle();
 			setRippleSize('10000%');
 		}
 	};
@@ -116,6 +148,7 @@ const Button = ({
 			onClick={onClickHandler}
 			style={{
 				cursor	: disabled ? getValue('md.sys.state.disabled.cursor') : 'pointer',
+				...(customStyle ? customStyle : {}),
 			}}
 		>
 
@@ -138,6 +171,7 @@ const Button = ({
 					color		: getValue(style.label.color),
 					opacity 	: style.label.opacity ? getValue(style.label.opacity) : 1,
 					pointerEvents: 'none',
+					userSelect	: 'none',
 				}}>{label}</div>
 
 				{/* State Layer */}

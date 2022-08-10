@@ -6,12 +6,10 @@ function App() {
 		<div className="p-[50px]">
 
 			<div className='flex items-center'>
-				<div className='mr-4'>
-					<Button label='Normal Button' />
-				</div>
-				<div className='mr-4'>
-					<Button label='Disabled Button' disabled={true} />
-				</div>
+				<Button label='Normal Button' style={{ marginRight: '1rem' }} />
+				<Button label='Disabled Normal' disabled={true} style={{ marginRight: '1rem' }} />
+				<FilledButton label='Filled Button' style={{ marginRight: '1rem' }} />
+				<FilledButton label='Disabled Filled' disabled={true} style={{ marginRight: '1rem' }} />
 			</div>
 
 			<div className='mt-[50px]'>
